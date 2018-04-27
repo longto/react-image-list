@@ -72,6 +72,12 @@
   color: #3994ea;
   font-weight: bold;
 }
+.user span{
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .user img{
   width: 20px;
   height:20px;

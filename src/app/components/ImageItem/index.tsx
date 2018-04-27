@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as style from './style.css';
 import * as classNames from 'classnames';
 import { ImageModel } from 'app/models';
+import { random as rand } from 'app/utils';
 
 export namespace ImageItem {
   export interface Props {
@@ -23,10 +24,6 @@ export class ImageItem extends React.Component<ImageItem.Props, ImageItem.State>
     this.setState({ fullScreen: !this.state.fullScreen });
   }
 
-  random(min=0, max=100){
-    return (min + Math.random() * (max - min)) | 0;
-  }
-
   render() {
     const { image } = this.props;
     const { user } = image;
@@ -36,7 +33,7 @@ export class ImageItem extends React.Component<ImageItem.Props, ImageItem.State>
       [style.fullScreen]: this.state.fullScreen,
     });
     const hasLink = classNames({
-      [style.link]: this.random()%2 === 0,
+      [style.link]: rand()%2 === 0,
     });
 
     return (
@@ -48,9 +45,9 @@ export class ImageItem extends React.Component<ImageItem.Props, ImageItem.State>
           </figcaption>
           <div className={style.meta}>
             <span className={hasLink}> </span>
-            <span className={style.eye}> {this.random(1000,7000)} </span>
-            <span className={style.comment}> {this.random()} </span>
-            <span className={style.love}> {this.random()} </span>
+            <span className={style.eye}> {rand(1000,7000)} </span>
+            <span className={style.comment}> {rand()} </span>
+            <span className={style.love}> {rand()} </span>
           </div>
         </figure>
         <div className={style.user}>

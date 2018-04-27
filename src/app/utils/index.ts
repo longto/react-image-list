@@ -9,3 +9,7 @@ export function omit<T extends object, K extends keyof T>(target: T, ...omitKeys
     {} as Omit<T, K>
   );
 }
+
+export function random(min=0, max=100){
+  return (min + Math.random() * (max - min)) | 0;
+}
