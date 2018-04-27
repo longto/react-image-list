@@ -46,6 +46,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  border-radius: 3px;
 }
 .imageContainer figure img{
   width: 100%;

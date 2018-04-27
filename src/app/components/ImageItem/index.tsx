@@ -29,6 +29,7 @@ export class ImageItem extends React.Component<ImageItem.Props, ImageItem.State>
 
   render() {
     const { image } = this.props;
+    const { user } = image;
     const url = image.images[this.state.fullScreen ? 'original' : 'fixed_width_small_still']['url'].replace('media0', 'i');
     const classes = classNames({
       [style.imageContainer]: true,
@@ -39,7 +40,7 @@ export class ImageItem extends React.Component<ImageItem.Props, ImageItem.State>
     });
 
     return (
-      <div className={classes} onClick={this.state.fullScreen ? this.handleClick.bind(this) : ''}>
+      <div className={classes} onClick={this.state.fullScreen ? this.handleClick.bind(this) : null}>
         <figure>
           <img src={url} alt={image.slug} title={image.title} onClick={this.handleClick.bind(this)}/>
           <figcaption title={image.title}>
@@ -53,7 +54,7 @@ export class ImageItem extends React.Component<ImageItem.Props, ImageItem.State>
           </div>
         </figure>
         <div className={style.user}>
-          <img src={image.user['avatar_url']}/>
+          <img src={user ? user['avatar_url'] : '' }/>
           <span>{image.username}</span>
         </div>
       </div>

@@ -2,3 +2,35 @@
   display: flex;
   flex-wrap: wrap;
 }
+.pager{
+  display: flex;
+}
+.status{}
+.pager .status{
+  margin-right: auto;
+  margin-top: 5px;
+}
+.pager input{
+  width: 60px;
+  text-align: center;
+  padding-left: 8px;
+  margin-left: 10px;
+}
+.pager span:before{
+  vertical-align: middle;
+  display: inline-block;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.prev:before{
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bababa" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>');
+}
+.first:before{
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bababa" d="M18.41,16.59L13.82,12L18.41,7.41L17,6L11,12L17,18L18.41,16.59M6,6H8V18H6V6Z" /></svg>');
+}
+.next:before{
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bababa" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>');
+}
+.last:before{
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bababa" d="M5.59,7.41L10.18,12L5.59,16.59L7,18L13,12L7,6L5.59,7.41M16,6H18V18H16V6Z" /></svg>');
+}
