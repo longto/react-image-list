@@ -1,0 +1,9 @@
+.imageContainer{
+  width: 25%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.imageContainer img{
+  width: 100%;
+  object-fit: cover;
+}
