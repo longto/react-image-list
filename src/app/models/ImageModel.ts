@@ -4,6 +4,8 @@ export interface ImageModel {
   slug: string;
   url: string;
   embed_url: string;
-  images: any;
+  username: string;
   title: string;
+  images: any;
+  user: any;
 }
