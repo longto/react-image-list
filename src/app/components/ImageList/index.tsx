@@ -21,7 +21,6 @@ export class ImageList extends React.Component<ImageList.Props, ImageList.State>
 
   wait: boolean = false;
   loading: boolean = false;
-  limit = 25; // result on each page
 
   constructor(props: ImageList.Props) {
     super(props);
@@ -41,8 +40,7 @@ export class ImageList extends React.Component<ImageList.Props, ImageList.State>
     const offset = (page-1)*this.state.limit;
     let url = `${this.state.url}&offset=${offset}&limit=${this.state.limit}`;
     this.loading = true;
-    fetch(url)
-      .then(response => response.json())
+    fetch(url).then(response => response.json())
       .then(({ data, pagination, meta }) => {
         this.setState({
           ...this.state,
@@ -77,14 +75,14 @@ export class ImageList extends React.Component<ImageList.Props, ImageList.State>
 
   render() {
     if(!this.state.data.length) {
-      return <div>loading ...</div>;
+      return <div className={style.loading}>loading ...</div>;
     } else {
       return (
         <div>
           <section className={style.imageList}>
-            {this.state.data.map((eachImg:ImageModel, i:number) => {
+            {this.state.data.map((image:ImageModel, i:number) => {
               return (
-                <ImageItem key={rand(0,99999)+eachImg.id} image={eachImg} />
+                <ImageItem key={rand(0,99999)+image.id} image={image} />
               )
             })}
           </section>
