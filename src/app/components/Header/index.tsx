@@ -23,6 +23,7 @@ export class Header extends React.Component<Header.Props> {
     return (
       <header>
         <h1>Image list</h1>
+        <h4> by long.to@niteco.se</h4>
       </header>
     );
   }

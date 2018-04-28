@@ -22,7 +22,7 @@ button {
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
-  background: #f5f5f5;
+  background: #fff;
   color: #4d4d4d;
   min-width: 230px;
   max-width: 1200px;
@@ -67,9 +67,14 @@ input[type='checkbox'] {
   font-size: 80px;
   font-weight: 100;
   text-align: center;
-  color: rgba(175, 47, 47, 0.15);
+  color: rgba(175, 47, 47, 0.25);
   -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
   -ms-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
+}
+
+.normal h4 {
+  text-align: center;
+  color: #aaa;
 }

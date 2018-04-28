@@ -6,11 +6,14 @@ import { random as rand } from 'app/utils';
 
 export namespace ImageList {
   export interface Props {
-    page : number;
+    limit: number;
+    url: string;
   }
   export interface State {
     page: number;
     data: ImageModel[];
+    limit: number;
+    url: string;
   }
 }
 
@@ -22,21 +25,22 @@ export class ImageList extends React.Component<ImageList.Props, ImageList.State>
 
   constructor(props: ImageList.Props) {
     super(props);
-    this.state = { data: [], page: 1 };
+    const{ limit=25, url='' } = props;
+    this.state = { data: [], page: 1, limit, url };
     this.loadData = this.loadData.bind(this);
-    this.jumpPage = this.jumpPage.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
   }
 
   nextPage() {
-    this.jumpPage(this.state.page + 1 );
+    this.loadData(this.state.page + 1 );
   }
 
-  loadData(page:number, offset:number, limit:number) {
+  loadData(page:number) {
     if (this.loading) return;
-    console.log(page, offset, limit);
-    let url = `https://api.giphy.com/v1/gifs/trending?api_key=27wYcK1dzHxwPmK4WCmvbo2IMcOEzYhi&offset=${offset}&limit=${limit}`;
+    const offset = (page-1)*this.state.limit;
+    console.log(page, offset, this.state.limit);
+    let url = `${this.state.url}&offset=${offset}&limit=${this.state.limit}`;
     this.loading = true;
     fetch(url)
       .then(response => response.json())
@@ -52,13 +56,8 @@ export class ImageList extends React.Component<ImageList.Props, ImageList.State>
       .catch(err => console.error(err.toString()))
   }
 
-  jumpPage(page: number = 1){
-
-    this.loadData(page,(page-1)*this.limit, this.limit);
-  }
-
   componentDidMount() {
-    this.jumpPage(1);
+    this.loadData(1);
     window.addEventListener('scroll', this.handleScroll);
   }
 
@@ -72,11 +71,9 @@ export class ImageList extends React.Component<ImageList.Props, ImageList.State>
     const that = this;
     requestAnimationFrame(()=>{
       that.wait = false;
-      if(document.documentElement.scrollTop + window.innerHeight>=document.documentElement.offsetHeight-500) {
+      if(document.documentElement.scrollTop + 2*window.innerHeight>=document.documentElement.offsetHeight) {
         that.nextPage();
-        console.log('At the bottom');
       }
-      console.log('scroll');
     });
   }
 

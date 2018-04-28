@@ -6,12 +6,12 @@
   flex-wrap: wrap;
   flex-direction: column;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .imageContainer {
     width: calc(100% / 3);
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .imageContainer {
     width: calc(100% / 2);
   }

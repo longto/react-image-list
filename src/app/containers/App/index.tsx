@@ -9,6 +9,10 @@ import { TodoModel } from 'app/models';
 import { omit } from 'app/utils';
 import {Header, TodoList, Footer, ImageList} from 'app/components';
 
+const API_KEY = '27wYcK1dzHxwPmK4WCmvbo2IMcOEzYhi';
+const URL = `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}`;
+const LIMIT = 25;
+
 const FILTER_VALUES = (Object.keys(TodoModel.Filter) as (keyof typeof TodoModel.Filter)[]).map(
   (key) => TodoModel.Filter[key]
 );
@@ -69,7 +73,7 @@ export class App extends React.Component<App.Props> {
       <div className={style.normal}>
         <Header addTodo={actions.addTodo} />
         <TodoList todos={filteredTodos} actions={actions} />
-        <ImageList page={1} />
+        <ImageList url={URL} limit={LIMIT} />
         <Footer
           filter={filter}
           activeCount={activeCount}
