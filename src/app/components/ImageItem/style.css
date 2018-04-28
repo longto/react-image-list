@@ -1,7 +1,7 @@
 .imageContainer{
   width: calc(100% / 4);
   box-sizing: border-box;
-  padding: 10px 15px;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

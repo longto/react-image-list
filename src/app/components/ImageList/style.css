@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   background-color: #f5f5f5;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2), 0 12px 50px 0 rgba(0, 0, 0, .05);
+  padding: 10px;
 }
 .pager{
   display: flex;
