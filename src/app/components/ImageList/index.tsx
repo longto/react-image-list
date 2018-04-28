@@ -39,13 +39,11 @@ export class ImageList extends React.Component<ImageList.Props, ImageList.State>
   loadData(page:number) {
     if (this.loading) return;
     const offset = (page-1)*this.state.limit;
-    console.log(page, offset, this.state.limit);
     let url = `${this.state.url}&offset=${offset}&limit=${this.state.limit}`;
     this.loading = true;
     fetch(url)
       .then(response => response.json())
       .then(({ data, pagination, meta }) => {
-        console.log(data, pagination, meta);
         this.setState({
           ...this.state,
           page,
